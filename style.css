@@ -1,0 +1,144 @@
+
+body 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
+    background-image: url(j2.png);
+    background-size: cover;
+}
+
+div 
+{
+    height: 500px;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/*    background-color: lightseagreen;*/
+    background: linear-gradient(lemonchiffon,lightseagreen,lightsteelblue);
+    filter: drop-shadow(2px 2px darkblue);
+}
+
+label
+{
+    font-size: 16px;
+    color: #333;
+    margin-right: 10px;
+    color: white;
+}
+
+div input 
+{
+    height: 30px;
+    width: 70px;
+    border: 1px solid sienna;
+    border-radius: 4px;
+    padding: 4px;
+    margin-left: 20px;
+}
+
+div button 
+{
+    height: 35px;
+    width: 80px;
+    margin-left: 20px;
+    border: none;
+    background-color: sienna;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 45%;
+    margin-top: 30px;
+}
+
+div button:hover 
+{
+    background-color: black;
+}
+
+div table 
+{
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+div table th, div table td 
+{
+    border: 2px solid darkgoldenrod;
+    text-align: center;
+    padding: 8px;
+}
+
+div table th 
+{
+    background-color: #f4f4f4;
+    
+
+}
+
+div table tr:nth-child(even)
+{
+    background-color: #f9f9f9;
+}
+
+div table tr:hover 
+{
+    background-color: #eaeaea;
+}
+@media(max-width:685px)
+{ 
+    div table tr
+        {
+            font-size: 10px;
+        }
+}
+@media(max-width:495px)
+{
+    div table tr
+        {
+             font-size: 6px;
+        }
+     div table 
+        {
+             width: 20px;
+        }
+    div input
+        {
+            width: 80px;
+            height: 20px;
+        }
+}
+@media(max-width:390px)
+{
+    div input
+        {
+            width: 30px;
+        }
+}
+@media(max-width:375px)
+{
+    div table tr
+        {
+            font-size:5px;
+        }
+    div input 
+        {
+            width: 150px;
+        }
+}
+@media(max-width:345px)
+{
+    div input
+    {
+        width: 50%;
+    }
+}
+

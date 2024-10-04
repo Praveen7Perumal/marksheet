@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student Marks Entry</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<script>
+    let div = document.createElement("div");
+    div.innerHTML = `
+    <form id="myform">
+        <label>Name :</label> 
+        <input type="text" id="name" placeholder="Name" style="width:200px;"> 
+        <br><br>
+        <span>
+            <label>Mark :</label> <input type="number" id="Tamil" placeholder="Tamil" required> 
+            <label>Mark :</label> <input type="number" id="english" placeholder="English" required> 
+            <label>Mark :</label> <input type="number" id="maths" placeholder="Maths" required> 
+            <label>Mark :</label> <input type="number" id="Science" placeholder="Science" required> 
+            <label>Mark :</label> <input type="number" id="Social" placeholder="Social" required>
+        </span>
+        <button id="submit">Submit</button> 
+        <br><br>
+        <table id="resultsTable">
+            <tr>
+                <th>S.no</th>
+                <th>Name</th>
+                <th>Mark1</th>
+                <th>Mark2</th>
+                <th>Mark3</th>
+                <th>Mark4</th>
+                <th>Mark5</th>
+                <th>Total</th>
+            </tr>
+        </table>
+        </form>
+    `;
+
+    document.body.appendChild(div);
+
+    let submit = document.getElementById("submit");
+    let resultsTable = document.getElementById("resultsTable");
+
+    submit.addEventListener("click", (event) => {
+        event.preventDefault();
+        
+        const name = document.getElementById("name").value.trim();
+        const mark1 = Number(document.getElementById("Tamil").value) || 0;
+        const mark2 = Number(document.getElementById("english").value) || 0;
+        const mark3 = Number(document.getElementById("maths").value) || 0;
+        const mark4 = Number(document.getElementById("Science").value) || 0;
+        const mark5 = Number(document.getElementById("Social").value) || 0;
+
+        if (!name) {
+            alert("Please enter a name.");
+            return;
+        }
+        
+        let total = mark1 + mark2 + mark3 + mark4 + mark5;
+
+        let newRow = resultsTable.insertRow();
+        newRow.insertCell(0).innerHTML = resultsTable.rows.length - 1; 
+        newRow.insertCell(1).innerHTML = name;
+        newRow.insertCell(2).innerHTML = mark1;
+        newRow.insertCell(3).innerHTML = mark2;
+        newRow.insertCell(4).innerHTML = mark3;
+        newRow.insertCell(5).innerHTML = mark4;
+        newRow.insertCell(6).innerHTML = mark5;
+        newRow.insertCell(7).innerHTML = total;
+
+        document.getElementById("myform").reset();
+    });
+</script>
+
+</body>
+</html>
+
