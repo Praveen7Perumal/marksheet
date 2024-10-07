@@ -5,22 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Student Marks Entry</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-</head>
+    </head>
 <body>
-
+   
+    
 <script>
     let div = document.createElement("div");
     div.innerHTML = `
     <form id="myform">
+        <h2>STUDENTS MARK FORM</h2>
         <label>Name :</label> 
-        <input type="text" id="name" placeholder="Name" style="width:200px;"> 
+        <input type="text" id="name" placeholder="Name" required> 
         <br><br>
         <span>
-            <label>Mark :</label> <input type="number" id="Tamil" placeholder="Tamil" required> 
-            <label>Mark :</label> <input type="number" id="english" placeholder="English" required> 
-            <label>Mark :</label> <input type="number" id="maths" placeholder="Maths" required> 
-            <label>Mark :</label> <input type="number" id="Science" placeholder="Science" required> 
-            <label>Mark :</label> <input type="number" id="Social" placeholder="Social" required>
+            <label>Tamil :</label> <input type="text" id="Tamil" placeholder="Mark" required> 
+            <label>English :</label> <input type="text" id="english" placeholder="Mark" required> 
+            <label>Maths :</label> <input type="text" id="maths" placeholder="Mark" required> 
+            <label>Science :</label> <input type="text" id="Science" placeholder="Mark" required> 
+            <label>Social :</label> <input type="text" id="Social" placeholder="Mark" required>
         </span>
         <button id="submit">Submit</button> 
         <br><br>
@@ -28,15 +30,15 @@
             <tr>
                 <th>S.no</th>
                 <th>Name</th>
-                <th>Mark1</th>
-                <th>Mark2</th>
-                <th>Mark3</th>
-                <th>Mark4</th>
-                <th>Mark5</th>
+                <th>Tamil</th>
+                <th>English</th>
+                <th>Maths</th>
+                <th>Science</th>
+                <th>Social</th>
                 <th>Total</th>
             </tr>
         </table>
-        </form>
+    </form>
     `;
 
     document.body.appendChild(div);
@@ -48,17 +50,18 @@
         event.preventDefault();
         
         const name = document.getElementById("name").value.trim();
-        const mark1 = Number(document.getElementById("Tamil").value) || 0;
-        const mark2 = Number(document.getElementById("english").value) || 0;
-        const mark3 = Number(document.getElementById("maths").value) || 0;
-        const mark4 = Number(document.getElementById("Science").value) || 0;
-        const mark5 = Number(document.getElementById("Social").value) || 0;
+        const mark1 = parseInt(document.getElementById("Tamil").value, 10) || 0;
+        const mark2 = parseInt(document.getElementById("english").value, 10) || 0;
+        const mark3 = parseInt(document.getElementById("maths").value, 10) || 0;
+        const mark4 = parseInt(document.getElementById("Science").value, 10) || 0;
+        const mark5 = parseInt(document.getElementById("Social").value, 10) || 0;
 
-        if (!name) {
-            alert("Please enter a name.");
+        if (mark1 >= 101 || mark2 >= 101 || mark3 >= 101 ||mark4 >= 101 || mark5 >= 101) {
+            alert("only below 100 mark");
             return;
         }
-        
+
+
         let total = mark1 + mark2 + mark3 + mark4 + mark5;
 
         let newRow = resultsTable.insertRow();
@@ -73,8 +76,22 @@
 
         document.getElementById("myform").reset();
     });
+
+    const markInputs = ['Tamil', 'english', 'maths', 'Science', 'Social'];
+    markInputs.forEach(id => {
+        document.getElementById(id).addEventListener('input', (event) => {
+            const value = event.target.value;
+            if (!/^\d{0,3}$/.test(value)) {
+                event.target.value = value.slice(0, 3);
+            }
+        });
+    });
 </script>
 
 </body>
 </html>
+
+
+ 
+
 
